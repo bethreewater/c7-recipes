@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>七號貨櫃 ｜ 調酒配方</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang TC", "Noto Sans TC", sans-serif;
+  background: #0A0A0A;
+  color: #F5F5F0;
+  line-height: 1.5;
+  padding: 12px 12px 32px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+header.top {
+  text-align: center;
+  padding: 6px 0 10px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.18);
+  margin-bottom: 10px;
+}
+
+header.top h1 {
+  font-size: 16px;
+  letter-spacing: 0.4em;
+  font-weight: 300;
+  margin-bottom: 3px;
+}
+
+header.top p {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: #C9A961;
+}
+
+.search {
+  max-width: 600px;
+  margin: 0 auto 6px;
+}
+
+.search input {
+  width: 100%;
+  padding: 8px 14px;
+  background: #1A1A1A;
+  border: 1px solid #2F2F2F;
+  color: #F5F5F0;
+  font-size: 13px;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.search input:focus {
+  outline: none;
+  border-color: #C9A961;
+}
+
+.controls {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.controls button {
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 4px 12px;
+  margin: 0 3px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.controls button:hover, .controls button:active {
+  border-color: #C9A961;
+  color: #C9A961;
+}
+
+main.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+@media (min-width: 600px) {
+  main.grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}
+
+@media (min-width: 900px) {
+  main.grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  main.grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+article.cocktail {
+  background: #141414;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s, background 0.2s;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+}
+
+article.cocktail:hover {
+  border-color: #555;
+  background: #181818;
+}
+
+article.cocktail.open {
+  border-color: #C9A961;
+  aspect-ratio: auto;
+  background: #141414;
+}
+
+article.cocktail > header {
+  padding: 12px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  gap: 6px;
+}
+
+article.cocktail.open > header {
+  flex: 0;
+  padding-bottom: 12px;
+}
+
+article.cocktail h2 {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+article.cocktail h2 .en {
+  display: block;
+  margin-top: 5px;
+  color: #888;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+article.cocktail.open h2 .en {
+  color: #C9A961;
+}
+
+article.cocktail .meta {
+  font-size: 11px;
+  color: #C9A961;
+  letter-spacing: 0.12em;
+  text-align: center;
+  padding: 8px 0 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #262626;
+}
+
+article.cocktail .recipe {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+article.cocktail.open .recipe {
+  max-height: 800px;
+}
+
+article.cocktail .recipe-inner {
+  padding: 0 14px 14px;
+}
+
+article.cocktail ol {
+  list-style: none;
+  counter-reset: step;
+}
+
+article.cocktail ol li {
+  counter-increment: step;
+  padding: 6px 0 6px 28px;
+  font-size: 12.5px;
+  position: relative;
+  border-bottom: 1px solid #1F1F1F;
+  line-height: 1.5;
+}
+
+article.cocktail ol li:last-child {
+  border-bottom: none;
+}
+
+article.cocktail ol li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  background: #2A2A2A;
+  color: #888;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+article.cocktail ol li.action {
+  color: #C9A961;
+  font-weight: 500;
+}
+
+article.cocktail ol li.action::before {
+  background: #C9A961;
+  color: #0A0A0A;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(201, 169, 97, 0.15);
+  color: #555;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-results {
+  text-align: center;
+  color: #555;
+  padding: 30px 20px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  display: none;
+}
+
+.no-results.show { display: block; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>CONTAINER NO.7</h1>
+  <p>調酒配方 ｜ COCKTAIL RECIPES</p>
+</header>
+
+<div class="search">
+  <input type="text" id="search" placeholder="搜尋酒名..." autocomplete="off" />
+</div>
+
+<div class="controls">
+  <button onclick="collapseAll()">全部收合</button>
+</div>
+
+<main class="grid" id="grid"></main>
+
+<div class="no-results" id="no-results">沒有符合的酒款</div>
+
+<footer>
+  <p>七號貨櫃 ｜ 內部教育用</p>
+</footer>
+
+<script>
+const cocktails = [
+  {
+    cn: "邦代海灘", en: "Bondi Beach",
+    glass: "Highball", method: "Shake → Build",
+    recipe: [
+      { text: "檸檬汁 5ml" },
+      { text: "糖漿 10ml" },
+      { text: "伏可藍柑橘香甜酒 15ml" },
+      { text: "MB 水蜜桃利口酒 40ml" },
+      { text: "Barcelo Rum 40ml" },
+      { text: "Shake 8 秒", action: true },
+      { text: "倒入裝滿冰的 Highball", action: true },
+      { text: "Soda 50–60ml 補滿", action: true }
+    ]
+  },
+  {
+    cn: "太陽神", en: "Apollo",
+    glass: "Rocks", method: "Shake",
+    recipe: [
+      { text: "檸檬汁 5ml" },
+      { text: "糖漿 15ml" },
+      { text: "聖羅莎紅酒 30ml" },
+      { text: "仙人掌酒 30ml" },
+      { text: "金快活龍舌蘭 30ml" },
+      { text: "Shake 8 秒", action: true },
+      { text: "濾入 Rocks 杯（已放大冰塊）", action: true }
+    ]
+  },
+  {
+    cn: "賭場", en: "Casino",
+    glass: "Coupe", method: "Shake",
+    recipe: [
+      { text: "檸檬汁 5ml" },
+      { text: "糖漿 15ml" },
+      { text: "義大利馬丁尼甜紅香艾酒 20ml" },
+      { text: "法國君度香橙利口酒 15ml" },
+      { text: "吉法葡萄柚香甜酒 30ml" },
+      { text: "高登琴酒 45ml" },
+      { text: "Shake 8 秒", action: true },
+      { text: "雙重過濾入 Coupe", action: true }
+    ]
+  },
+  {
+    cn: "洛神賦", en: "Ode of the River Goddess",
+    glass: "Coupe / Wine Glass", method: "Stir",
+    recipe: [
+      { text: "檸檬酸 5ml" },
+      { text: "濃縮洛神汁 15ml" },
+      { text: "法國君度香橙利口酒 10ml" },
+      { text: "聖羅莎白酒 60ml" },
+      { text: "洛神花 6–7 顆（已泡開）" },
+      { text: "吧匙繞 30 秒", action: true },
+      { text: "雙重過濾入 Coupe", action: true }
+    ]
+  },
+  {
+    cn: "性轉山格利亞", en: "Sexual Transformation Sangria",
+    glass: "大 Wine Glass", method: "Shake",
+    recipe: [
+      { text: "檸檬汁 5ml" },
+      { text: "柳橙汁 45ml" },
+      { text: "覆盆莓糖漿 10ml" },
+      { text: "義大利馬丁尼甜紅香艾酒 15ml" },
+      { text: "人頭馬白蘭地 10ml" },
+      { text: "紅酒（聖羅莎）60ml" },
+      { text: "Shake 8 秒", action: true },
+      { text: "濾入大 Wine 杯", action: true }
+    ]
+  },
+  {
+    cn: "白日夢", en: "Daydream",
+    glass: "Coupe", method: "Stir",
+    recipe: [
+      { text: "Heering 櫻桃利口酒 20ml" },
+      { text: "葡夢香甜酒 Pavan 15ml" },
+      { text: "義大利馬丁尼甜紅香艾酒 15ml" },
+      { text: "白酒 60ml" },
+      { text: "吧匙繞 30 秒", action: true },
+      { text: "雙重過濾入 Coupe", action: true }
+    ]
+  },
+  {
+    cn: "生氣的查理", en: "Charles",
+    glass: "Highball", method: "Shake → Build",
+    recipe: [
+      { text: "檸檬汁 5ml" },
+      { text: "Disaronno 杏仁香甜利口酒 20ml" },
+      { text: "高登琴酒 15ml" },
+      { text: "HAYMAN'S 海曼黑刺李琴酒 45ml" },
+      { text: "Shake 8 秒", action: true },
+      { text: "倒入裝滿冰的杯", action: true },
+      { text: "Soda on top 補滿", action: true }
+    ]
+  },
+  {
+    cn: "水手畢夏普", en: "Seaman Bishop",
+    glass: "Highball", method: "Shake",
+    recipe: [
+      { text: "檸檬汁 10ml" },
+      { text: "百香果糖漿 15ml" },
+      { text: "本格梅酒 20ml" },
+      { text: "法國君度香橙利口酒 15ml" },
+      { text: "Vodka 30ml" },
+      { text: "英國傑瑞水手蘭姆酒 30ml" },
+      { text: "高登琴酒 20ml" },
+      { text: "Shake 10 秒", action: true },
+      { text: "倒入裝滿冰的 Highball", action: true }
+    ]
+  },
+  {
+    cn: "青梅竹馬", en: "Childhood Sweethearts",
+    glass: "Coupe / Rocks", method: "Shake",
+    recipe: [
+      { text: "檸檬汁 5ml" },
+      { text: "青蘋果糖漿 10ml" },
+      { text: "法國君度香橙利口酒 5ml" },
+      { text: "人頭馬白蘭地 15ml" },
+      { text: "本格梅酒 60ml" },
+      { text: "Shake 8 秒", action: true },
+      { text: "雙重過濾入 Coupe", action: true }
+    ]
+  },
+  {
+    cn: "女王蜂", en: "Queen Bee",
+    glass: "Coupe", method: "Shake",
+    recipe: [
+      { text: "檸檬汁 5ml" },
+      { text: "法國君度香橙利口酒 5ml" },
+      { text: "SUNTORY 巨峰葡萄香甜酒 30ml" },
+      { text: "四玫瑰威士忌 60ml" },
+      { text: "Shake 8 秒", action: true },
+      { text: "雙重過濾入 Coupe", action: true }
+    ]
+  }
+];
+
+const grid = document.getElementById('grid');
+
+cocktails.forEach((c) => {
+  const article = document.createElement('article');
+  article.className = 'cocktail';
+  article.dataset.name = (c.cn + ' ' + c.en).toLowerCase();
+
+  const items = c.recipe.map(r =>
+    `<li${r.action ? ' class="action"' : ''}>${r.text}</li>`
+  ).join('');
+
+  article.innerHTML = `
+    <header onclick="toggleCard(this)">
+      <h2>${c.cn}<span class="en">${c.en}</span></h2>
+    </header>
+    <div class="recipe">
+      <div class="recipe-inner">
+        <p class="meta">${c.glass} ｜ ${c.method}</p>
+        <ol>${items}</ol>
+      </div>
+    </div>
+  `;
+  grid.appendChild(article);
+});
+
+// Accordion: 點別的會收原本展開的
+function toggleCard(headerEl) {
+  const card = headerEl.parentElement;
+  const wasOpen = card.classList.contains('open');
+  document.querySelectorAll('article.cocktail.open').forEach(c => c.classList.remove('open'));
+  if (!wasOpen) card.classList.add('open');
+}
+
+function collapseAll() {
+  document.querySelectorAll('article.cocktail').forEach(c => c.classList.remove('open'));
+}
+
+const noResults = document.getElementById('no-results');
+document.getElementById('search').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase().trim();
+  let visible = 0;
+  document.querySelectorAll('article.cocktail').forEach(c => {
+    const name = c.dataset.name;
+    const show = !q || name.includes(q);
+    c.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  noResults.classList.toggle('show', visible === 0);
+});
+</script>
+
+</body>
+</html>
