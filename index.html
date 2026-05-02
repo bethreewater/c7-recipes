@@ -130,7 +130,7 @@ article.cocktail.open {
 }
 
 article.cocktail > header {
-  padding: 12px;
+  padding: 18px 16px;
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -139,26 +139,26 @@ article.cocktail > header {
   align-items: center;
   text-align: center;
   flex: 1;
-  gap: 6px;
+  gap: 8px;
 }
 
 article.cocktail.open > header {
   flex: 0;
-  padding-bottom: 12px;
+  padding-bottom: 16px;
 }
 
 article.cocktail h2 {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 300;
   letter-spacing: 0.05em;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 article.cocktail h2 .en {
   display: block;
-  margin-top: 5px;
+  margin-top: 8px;
   color: #888;
-  font-size: 9.5px;
+  font-size: 11px;
   letter-spacing: 0.2em;
   font-weight: 300;
   text-transform: uppercase;
@@ -169,12 +169,12 @@ article.cocktail.open h2 .en {
 }
 
 article.cocktail .meta {
-  font-size: 11px;
+  font-size: 13px;
   color: #C9A961;
   letter-spacing: 0.12em;
   text-align: center;
-  padding: 8px 0 12px;
-  margin-bottom: 10px;
+  padding: 10px 0 14px;
+  margin-bottom: 12px;
   border-bottom: 1px solid #262626;
 }
 
@@ -189,7 +189,7 @@ article.cocktail.open .recipe {
 }
 
 article.cocktail .recipe-inner {
-  padding: 0 14px 14px;
+  padding: 0 18px 18px;
 }
 
 article.cocktail ol {
@@ -199,8 +199,8 @@ article.cocktail ol {
 
 article.cocktail ol li {
   counter-increment: step;
-  padding: 6px 0 6px 28px;
-  font-size: 12.5px;
+  padding: 9px 0 9px 34px;
+  font-size: 14.5px;
   position: relative;
   border-bottom: 1px solid #1F1F1F;
   line-height: 1.5;
@@ -214,15 +214,15 @@ article.cocktail ol li::before {
   content: counter(step);
   position: absolute;
   left: 0;
-  top: 6px;
-  width: 20px;
-  height: 20px;
+  top: 9px;
+  width: 24px;
+  height: 24px;
   background: #2A2A2A;
   color: #888;
   border-radius: 50%;
   text-align: center;
-  line-height: 20px;
-  font-size: 10px;
+  line-height: 24px;
+  font-size: 11px;
   font-weight: 600;
 }
 
